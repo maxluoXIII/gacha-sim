@@ -64,6 +64,8 @@ if __name__ == "__main__":
     roll_group = parser.add_mutually_exclusive_group(required=True)
     roll_group.add_argument("--rolls", nargs=1, help="Number of rolls")
     roll_group.add_argument("--resources", nargs=3, help="Get number of rolls from <orundum>, <single-roll tickets>, and <ten-roll tickets>")
+    parser.add_argument("--target", nargs=1, help="Number of rate-up operators to target")
+    parser.add_argument("--all", help="Switch to calculating probability of getting all targeted operators")
 
 
     args = parser.parse_args()
@@ -73,6 +75,8 @@ if __name__ == "__main__":
     else:
         saved_rolls = get_rolls(*map(int, args.resources))
 
+    print(args)
+
     num_simulations = 10000
-    results = get_stats(num_simulations)
-    print_graphs(results, num_simulations, saved_rolls)
+    # results = get_stats(num_simulations)
+    # print_graphs(results, num_simulations, saved_rolls)
