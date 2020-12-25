@@ -72,7 +72,9 @@ if __name__ == "__main__":
         saved_rolls = int(args.rolls[0])
     else:
         saved_rolls = get_rolls(*map(int, args.resources))
+        print("Using these resources, you can do {} rolls".format(saved_rolls))
 
     num_simulations = 10000
     results = get_stats(num_simulations)
+    saved_rolls = min(300, saved_rolls)
     print_graphs(results, num_simulations, saved_rolls)
